@@ -17,12 +17,18 @@ def main():
         elif choice == '2':
             list_tasks()
         elif choice == '3':
-            index = int(input("Enter task index to remove: "))
-            # Bug: Assumes input is int, crashes otherwise
+            try:
+                index = int(input("Enter task index to remove: "))
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+                continue
             remove_task(index)
         elif choice == '4':
-            index = int(input("Enter task index to mark done: "))
-            # Bug: Assumes input is int
+            try:
+                index = int(input("Enter task index to mark done: "))
+            except ValueError:
+                print("Invalid input. Please enter a number.")
+                continue
             mark_done(index)
         elif choice == '5':
             # Bug: Doesn't save tasks on exit

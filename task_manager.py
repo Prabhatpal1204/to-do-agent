@@ -22,14 +22,18 @@ def list_tasks():
 
 def remove_task(index):
     tasks = load_tasks()
-    # Bug: No validation for invalid index, will crash
+    if index < 0 or index >= len(tasks):
+        print("Invalid index.")
+        return
     del tasks[index]
     # Removed save_tasks
     print("Task removed.")
 
 def mark_done(index):
     tasks = load_tasks()
-    # Bug: No validation for invalid index
+    if index < 0 or index >= len(tasks):
+        print("Invalid index.")
+        return
     tasks[index]['done'] = True
     # Removed save_tasks
     print("Task marked as done.")
