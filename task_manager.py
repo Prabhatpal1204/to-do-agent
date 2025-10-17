@@ -2,7 +2,10 @@ from utils import load_tasks
 
 def add_task(task_name):
     tasks = load_tasks()
-    # Bug: No duplicate checking
+    # Check for duplicates (case-insensitive)
+    if any(t['name'].lower() == task_name.lower() for t in tasks):
+        print(f"Task '{task_name}' already exists.")
+        return
     tasks.append({'name': task_name, 'done': False})
     # Removed save_tasks to introduce bug: changes not persisted
     print(f"Task '{task_name}' added.")
