@@ -17,11 +17,11 @@ def list_tasks():
         return
     for i, task in enumerate(tasks):
         status = "Done" if task['done'] else "Pending"
-        # Bug: Indexing starts from 0, but user might expect 1
-        print(f"{i}: {task['name']} - {status}")
+        print(f"{i+1}: {task['name']} - {status}")
 
 def remove_task(index):
     tasks = load_tasks()
+    index = index - 1  # Adjust for 1-based user input
     if index < 0 or index >= len(tasks):
         print("Invalid index.")
         return
@@ -31,6 +31,7 @@ def remove_task(index):
 
 def mark_done(index):
     tasks = load_tasks()
+    index = index - 1  # Adjust for 1-based user input
     if index < 0 or index >= len(tasks):
         print("Invalid index.")
         return
