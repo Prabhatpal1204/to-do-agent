@@ -1,6 +1,9 @@
 from utils import load_tasks
 
 def add_task(task_name):
+    if not task_name.strip():
+        print("Task name cannot be empty.")
+        return
     tasks = load_tasks()
     # Check for duplicates (case-insensitive)
     if any(t['name'].lower() == task_name.lower() for t in tasks):
