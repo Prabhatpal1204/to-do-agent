@@ -1,4 +1,4 @@
-from utils import load_tasks
+from utils import load_tasks, save_tasks
 
 def add_task(task_name):
     if not task_name.strip():
@@ -10,7 +10,7 @@ def add_task(task_name):
         print(f"Task '{task_name}' already exists.")
         return
     tasks.append({'name': task_name, 'done': False})
-    # Removed save_tasks to introduce bug: changes not persisted
+    save_tasks(tasks)
     print(f"Task '{task_name}' added.")
 
 def list_tasks():
@@ -29,7 +29,7 @@ def remove_task(index):
         print("Invalid index.")
         return
     del tasks[index]
-    # Removed save_tasks
+    save_tasks(tasks)
     print("Task removed.")
 
 def mark_done(index):
@@ -39,5 +39,5 @@ def mark_done(index):
         print("Invalid index.")
         return
     tasks[index]['done'] = True
-    # Removed save_tasks
+    save_tasks(tasks)
     print("Task marked as done.")
